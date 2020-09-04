@@ -11,7 +11,6 @@ contract SocialNetwork {
         uint id;
         string heading;
         string content;
-        string email;
         uint tipAmount;
         address payable author;
     }
@@ -20,7 +19,6 @@ contract SocialNetwork {
         uint id,
         string heading,
         string content,
-        string email,
         uint tipAmount,
         address payable author
     );
@@ -36,17 +34,17 @@ contract SocialNetwork {
         name = "Meridio Chain";
     }
 
-    function createPost(string memory _heading, string memory _content, string memory _email) public {
+    function createPost(string memory _heading, string memory _content) public {
         // Require valid content
         require(bytes(_content).length > 0);
         // Increment the post count
         postCount ++;
         // Create the post
-        posts[postCount] = Post(postCount, _heading, _content, _email, 0, msg.sender);
+        posts[postCount] = Post(postCount, _heading, _content,  0, msg.sender);
         user_post_count[msg.sender] ++;
-        user_post[user_post_count[msg.sender]] = Post(postCount, _heading, _content, _email, 0, msg.sender);
+        user_post[user_post_count[msg.sender]] = Post(postCount, _heading, _content,  0, msg.sender);
         // Trigger event
-        emit PostCreated(postCount, _heading, _content, _email, 0, msg.sender);
+        emit PostCreated(postCount, _heading, _content,  0, msg.sender);
     }
 
     function tipPost(uint _id) public payable {

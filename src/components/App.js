@@ -3,7 +3,8 @@ import Web3 from 'web3';
 import './App.css';
 import SocialNetwork from '../abis/SocialNetwork.json'
 import Navbar from './Navbar'
-import Main from './Main'
+import Main from './Main';
+import { add_user,get_all_users,get_user } from '../apis';
 
 class App extends Component {
 
@@ -12,7 +13,9 @@ class App extends Component {
     socialNetwork: null,
     postCount: 0,
     posts: [],
-    loading: true
+    loading: true,
+    status : true,
+    allUserData:[]
   }
 
   async componentDidMount() {
@@ -33,11 +36,31 @@ class App extends Component {
     }
   }
 
+  async saveUser(address_user){
+      let name = '',
+      image = '',
+      email = '',
+      address = address_user,
+      tagline = '';
+      localStorage.setItem('address', address_user);
+      localStorage.setItem('email', email);
+      let x = await add_user({name,image,email,address,tagline});
+      console.log(x);
+      if(typeof(x.data)=="string")
+          console.log("Address already in the server");
+      else{
+          console.log(x.status);
+      }
+
+  }
+
+
   async loadBlockchainData() {
     const web3 = window.web3
     // Load account
     const accounts = await web3.eth.getAccounts()
-    this.setState({ account: accounts[0] })
+    this.setState({ account: accounts[0] });
+    this.saveUser(accounts[0]);
     // Network ID
     const networkId = await web3.eth.net.getId()
     const networkData = SocialNetwork.networks[networkId]
@@ -57,19 +80,44 @@ class App extends Component {
       this.setState({
         posts: this.state.posts.sort((a,b) => b.tipAmount - a.tipAmount )
       })
-      this.setState({ loading: false})
+      let x =await  get_all_users();
+      console.log(x)
+      this.setState({ loading: false,allUserData:x.data});
     } else {
       window.alert('Meridio Chain contract not deployed to detected network.')
     }
   }
 
-  createPost(heading, content,email) {
-    this.setState({ loading: true })
-    this.state.socialNetwork.methods.createPost(heading, content,email).send({ from: this.state.account })
-    .once('receipt', (receipt) => {
+  async checkCompleteProfile(){
+      let address=this.state.account;
+      let x = await get_user(address);
+      if(x.status=="Success"){
+        let data=x.data;
+        if(data.name==""||data.email==""||data.image==""||data.tagline==""){
+            window.location.href="/profile"
+        }
+    }
+    else{
+        window.location.reload();
+    }
+    
+  } 
+ 
+  createPost(heading, content) {
+    
+    this.setState({ loading: true });
+    
+    
+    this.state.socialNetwork.methods.createPost(heading, content).send({ from: this.state.account })
+    .then(function (result) {
+      
+      alert("Post Created")
       this.setState({ loading: false })
-    })
-  }
+    }).catch(function (err) {
+      alert(err);
+    });
+
+    }
 
   tipPost(id, tipAmount) {
     this.setState({ loading: true })
@@ -84,6 +132,7 @@ class App extends Component {
    
     this.createPost = this.createPost.bind(this)
     this.tipPost = this.tipPost.bind(this)
+    this.checkCompleteProfile=this.checkCompleteProfile.bind(this)
   }
 
   render() {
@@ -96,6 +145,8 @@ class App extends Component {
               posts={this.state.posts}
               createPost={this.createPost}
               tipPost={this.tipPost}
+              allUserData={this.state.allUserData}
+              checkCompleteProfile={this.checkCompleteProfile}
             />
         }
       </div>
