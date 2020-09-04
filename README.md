@@ -23,8 +23,9 @@
 
 ### Authors
 
+#### [Adittya Dey](https://github.com/adiXcodr)
 #### [Subhasish Goswami](https://github.com/subhasishgosw5)
-#### [Aavishkar Mishra](https://github.com/abhinavanandthakur)
-#### [Rabijit Singh](https://github.com/abhinavanandthakur)
-#### [Adittya Dey](https://github.com/adiXcodr) 
+#### [Aavishkar Mishra](https://github.com/aavishkarmishra)
+#### [Rabijit Singh](https://github.com/rabijitsingh)
+ 
 
