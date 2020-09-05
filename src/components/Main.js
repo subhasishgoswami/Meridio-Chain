@@ -122,17 +122,18 @@ class Main extends Component {
                 return(
                   <>
                   <div className="postcard col-md-9 ml-auto mr-auto" key={key}>
-                    <div className="post-header">
+                    <div className="post-header" style={{width:'100%'}}>
                       <img
-                        className='mr-2'
-                        width='30'
-                        height='30'
+                        className='mr-2 float-left'
+                        width='40'
+                        height='40'
                         src={post.image}
                       />
-                      <div className= "header-data"><p><strong>{post.name}</strong></p>
-                      <small className="text-muted">{post.email}</small></div>
-                      
+                       <div className= "header-data "><p><strong>{post.name}</strong></p>
+                       <small className="text-muted ">{post.email}</small></div>
                     </div>
+                   
+                      
                     <hr></hr>
                     <div className="post-body">
                     <h2 class="heading">{post.heading}</h2>

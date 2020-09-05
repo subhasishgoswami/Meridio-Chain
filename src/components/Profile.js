@@ -114,16 +114,16 @@ export default class Profile extends Component {
                     {this.state.userData.name==""||this.state.userData.image==""||this.state.userData.email==""||this.state.userData.tagline==""?
                         <AddProfile userData={this.state.userData} />
                         :
-                        <div className="text-center mt-5">   
+                        <div className="text-center mt-5 container">   
                             
   
 
                                 <h3>Welcome!</h3>
-                                <div style={{flexDirection:'row'}}>
+                                <div className="row">
 
 
 
-                                        <Card style={{ width: '20%' }} id="ViewProfileCard" className="float-left">
+                                        <Card id="ViewProfileCard" className="float-left col-sm-3 mx-5">
                                         <img src={this.state.userData.image} />
                                         <Card.Body>
                                             <Card.Title>{this.state.userData.name}</Card.Title>
@@ -137,10 +137,10 @@ export default class Profile extends Component {
                                         </Card.Body>
                                         </Card>
 
-
-                                        <div className="row float-right">
+                                    <div className="col-md">
+                                        <div className="row">
                                             {!this.state.loading?
-                                            <main role="main" className="col-lg-12 ml-auto mr-auto" style={{ maxWidth: '500px'}}>
+                                            <main role="main" className="col-lg-12 ml-auto mr-auto" style={{}}>
                                                 <div className="content mr-auto ml-auto">
                                                 <p>&nbsp;</p>
                                                 { this.state.posts.map((post, key) => {
@@ -172,6 +172,7 @@ export default class Profile extends Component {
                                             null}
 
                                             </div>
+                                        </div>
                                 </div>
                         </div>
                     }
