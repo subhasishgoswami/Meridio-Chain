@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { update_user } from '../apis';
 import Card from 'react-bootstrap/Card'
+import $ from 'jquery';
 
 
 export default class AddProfile extends Component {
@@ -25,17 +26,42 @@ export default class AddProfile extends Component {
         }
     }
 
+     resizeBase64Img(base64, width, height) {
+        //  console.log(base64)
+        return(base64)
+        // var canvas = document.createElement("canvas");
+        // canvas.width = width;
+        // canvas.height = height;
+        // var context = canvas.getContext("2d");
+        // var deferred = $.Deferred();
+        // $("<img/>").attr("src", "data:image/jpg;base64," + base64).on('load',function() {
+        //     context.scale(width/this.width,  height/this.height);
+        //     context.drawImage(this, 0, 0); 
+        //     deferred.resolve($("<img/>").attr("src", canvas.toDataURL()));               
+        // });
+        // console.log(deferred.promise())
+        // return deferred.promise();    
+    }
+
     handleImageChange(e) {
         e.preventDefault();
         let file = e.target.files[0];
         let reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onloadend = () => {
-          this.setState({
-            file: file,
-            base64: reader.result
-          });
+        //   this.resizeBase64Img(reader.result, 100, 100).then(function(newImg){
+            
+        //     this.setState({
+        //         file: file,
+        //         base64: reader.result
+        //       });
+        //   });
           
+        this.setState({
+                    file: file,
+                    base64: reader.result
+                  });
+
         };
       }
 
