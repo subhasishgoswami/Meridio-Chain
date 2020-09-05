@@ -8,7 +8,7 @@ class Example extends Component {
 
   render() {
     return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar bg="black" variant="light">
     <Navbar.Brand href="/" id= "navbar_logo">
       <img
         alt="Meridio Chain"
