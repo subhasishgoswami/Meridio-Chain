@@ -13,14 +13,14 @@ class Example extends Component {
       <img
         alt="Meridio Chain"
         src="/icon.png"
-        width="80"
-        height="80"
+        width="100"
+        height="100"
       />{' '}
     </Navbar.Brand>
     <Nav className="ml-auto">
       <Nav.Link href="/">Home</Nav.Link>
       <Nav.Link href="/profile">Profile</Nav.Link>
-      <Nav.Link href="/github">Github</Nav.Link>
+      <Nav.Link href="https://github.com/subhasishgosw5/Meridio-Chain">Github</Nav.Link>
     </Nav>
   </Navbar>
     );

@@ -162,6 +162,7 @@ class App extends Component {
               tipPost={this.tipPost}
               allUserData={this.state.allUserData}
               checkCompleteProfile={this.checkCompleteProfile}
+              address={this.state.account}
             />
         }
       </div>

@@ -38,7 +38,7 @@ body{
 
 #ViewProfileCard{
 	margin:30px auto !important;
-	background-color:#fafafa;
+	background-color:#f9f9f9;
 }
 
 #userPostHeading{
@@ -55,15 +55,16 @@ body{
 }
 
 #addPostButton{
-	margin:30px auto !important;
-	width:20% !important;
+	width:60% !important;
 	position: relative;
-	left:40%;
+	margin:0 10% !important;
+	background-color: #29487D;
+	color:'#212121' !important;
 }
 
 .postcard{
 	border: 1px solid #b4b4b4 ;
-	background-color: #f0f0f0;
+	background-color: #f9f9f9;
 	border-radius: 10px ;
 	margin: 2rem;
 }
@@ -105,4 +106,10 @@ body{
 #reactLoader{
 	position: absolute;
 	top:300px !important;
+}
+
+#newPostButtonContainer{
+	width:30% !important;
+	background-color:'white' !important;
+	height: 85px !important;
 }
