@@ -4,7 +4,7 @@ contract SocialNetwork {
     string public name;
     uint public postCount = 0;
     mapping(uint => Post) public posts;
-    mapping(uint => Post) public user_post;
+    mapping (address => mapping (uint => Post) ) public user_post;
     mapping(address => uint) public user_post_count;
 
     struct Post {
@@ -42,7 +42,7 @@ contract SocialNetwork {
         // Create the post
         posts[postCount] = Post(postCount, _heading, _content,  0, msg.sender);
         user_post_count[msg.sender] ++;
-        user_post[user_post_count[msg.sender]] = Post(postCount, _heading, _content,  0, msg.sender);
+        user_post[msg.sender][user_post_count[msg.sender]] = Post(postCount, _heading, _content,  0, msg.sender);
         // Trigger event
         emit PostCreated(postCount, _heading, _content,  0, msg.sender);
     }

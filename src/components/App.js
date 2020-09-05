@@ -5,6 +5,7 @@ import SocialNetwork from '../abis/SocialNetwork.json'
 import Navbar from './Navbar'
 import Main from './Main';
 import { add_user,get_all_users,get_user } from '../apis';
+import Loader from 'react-loader-spinner';
 
 class App extends Component {
 
@@ -69,13 +70,19 @@ class App extends Component {
       this.setState({ socialNetwork })
       const postCount = await socialNetwork.methods.postCount().call()
       this.setState({ postCount })
+
+
       // Load Posts
       for (let i = 1; i <= postCount; i++) {
         const post = await socialNetwork.methods.posts(i).call()
         this.setState({
           posts: [...this.state.posts, post]
         })
+
+
       }
+
+
       // Sort posts. Show highest tipped posts first
       this.setState({
         posts: this.state.posts.sort((a,b) => b.tipAmount - a.tipAmount )
@@ -140,7 +147,15 @@ class App extends Component {
       <div>
         <Navbar account={this.state.account} />
         { this.state.loading
-          ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
+          ? 
+          <div style={{width:'100%'}} className="align-middle text-center mt-5" id="reactLoader">
+          <Loader
+              type="Grid"
+              color="#29487D"
+              height={80}
+              width={80}
+          />
+          </div>
           : <Main
               posts={this.state.posts}
               createPost={this.createPost}

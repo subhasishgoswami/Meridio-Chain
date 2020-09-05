@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Identicon from 'identicon.js';
 import {Modal,Button, Form} from 'react-bootstrap'
+import Loader from 'react-loader-spinner';
 
 function MyVerticallyCenteredModal(props) {
   return (
@@ -116,18 +117,25 @@ class Main extends Component {
               { this.state.posts.map((post, key) => {
                 return(
                   <div className="postcard col-md-9 ml-auto mr-auto" key={key}>
-                    <div className="post-header">
+                    <div className="post-header" style={{width:'100%'}}>
                       <img
-                        className='mr-2'
-                        width='30'
-                        height='30'
+                        className='mr-2 float-left'
+                        width='40'
+                        height='40'
                         src={post.image}
                       />
+<<<<<<< HEAD
                       <div className= "header-data">
                         <p><strong>{post.name}</strong></p>
                         <a href={"mailto:"+post.email}><small className="text-muted">{post.email}</small></a>
                       </div>
+=======
+                       <div className= "header-data "><p><strong>{post.name}</strong></p>
+                       <small className="text-muted ">{post.email}</small></div>
+>>>>>>> 8a416d3b590e24d7f9edef6d9d3a75f56f3f8b5b
                     </div>
+                   
+                      
                     <hr></hr>
                     <div className="post-body">
                       <h2 class="heading">{post.heading}</h2>
@@ -153,7 +161,21 @@ class Main extends Component {
             </div>
           </main>
           :
+<<<<<<< HEAD
           null}
+=======
+          <div style={{width:'100%'}} className="align-middle text-center mt-5" id="reactLoader">
+          <Loader
+              type="Grid"
+              color="#29487D"
+              height={80}
+              width={80}
+          />
+          </div>
+          
+          }
+
+>>>>>>> 8a416d3b590e24d7f9edef6d9d3a75f56f3f8b5b
         </div>
       </div>
     );
