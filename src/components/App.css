@@ -1,5 +1,5 @@
-
-
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
 #navbar_logo
 {
 	margin-top: -15px !important;
@@ -54,4 +54,44 @@ body{
 	width:20% !important;
 	position: relative;
 	left:40%;
+}
+
+.postcard{
+	border: 1px solid #b4b4b4 ;
+	background-color: #f0f0f0;
+	border-radius: 10px ;
+}
+
+.postcard .post-header{
+	display: inline-flex;
+	margin-top: 1rem;
+}
+.postcard .post-header img{
+	margin-top: 0.5rem;
+	border-radius: 60px;
+}
+
+
+.postcard .post-header .header-data{
+	display: inline !important;
+	margin-left: 10px;
+}
+.postcard .post-header .header-data p{ 
+	margin: 0px;
+}
+.postcard .post-header .header-data small{ 
+	margin: 0px;
+}
+.postcard .post-body{
+	margin-bottom: 1rem;
+}
+.postcard .post-body .heading{
+	font-family: 'Bebas Neue', cursive;
+	font-size: 30px;
+	margin-left: 1rem;
+}
+.postcard .post-body p{
+	font-family: 'Lora', serif;
+	font-size: 25px;
+	margin-left: 1.5rem;
 }
