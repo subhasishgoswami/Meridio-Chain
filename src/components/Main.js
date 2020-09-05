@@ -113,34 +113,31 @@ class Main extends Component {
         email={this.props.email}
       />
        <div className="row">
+       
          {!this.state.loading?
-          <main role="main" className="col-lg-12 ml-auto mr-auto" style={{ maxWidth: '500px'}}>
+          <main role="main" className="col-md-12 ml-auto mr-auto" >
             <div className="content mr-auto ml-auto">
               <p>&nbsp;</p>
               { this.state.posts.map((post, key) => {
                 return(
-                  <div className="card mb-4" key={key} style={{backgroundColor:'#232627'}}>
-                    <div className="card-header">
+                  <>
+                  <div className="postcard col-md-9 ml-auto mr-auto" key={key}>
+                    <div className="post-header">
                       <img
                         className='mr-2'
                         width='30'
                         height='30'
                         src={post.image}
                       />
-                      <small className="text-muted float-right">{post.name}</small>
+                      <div className= "header-data"><p><strong>{post.name}</strong></p>
+                      <small className="text-muted">{post.email}</small></div>
+                      
                     </div>
-                    <ul id="postList" className="list-group list-group-flush">
-                    <li className="list-group-item">
-                        <p>{post.heading}</p>
-                      </li>
-                      <li className="list-group-item">
-                        <p>{post.content}</p>
-                      </li>
-                      <li className="list-group-item">
-                      <p>{post.email}</p>
-                      </li> 
-                      <li key={key} className="list-group-item py-2">
-                        <small className="float-left mt-1 text-muted">
+                    <hr></hr>
+                    <div className="post-body">
+                    <h2 class="heading">{post.heading}</h2>
+			  		        <p>{post.content}</p>
+                    <small className="float-bottom-left mt-1 text-muted">
                           TIPS: {window.web3.utils.fromWei(post.tipAmount.toString(), 'Ether')} ETH
                         </small>
                         <button
@@ -151,12 +148,11 @@ class Main extends Component {
                             console.log(event.target.name, tipAmount)
                             this.props.tipPost(event.target.name, tipAmount)
                           }}
-                        >
-                          TIP 0.1 ETH
-                        </button>
-                      </li>
-                    </ul>
+                        >TIP 0.1 ETH</button>
+                    </div>
+                    
                   </div>
+                  </>
                 )
               })}
             </div>
