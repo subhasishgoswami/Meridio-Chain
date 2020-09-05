@@ -166,7 +166,6 @@ class Main extends Component {
                       
                     <hr></hr>
                     <div className="post-body">
-<<<<<<< HEAD
                       <h2 className="heading">{post.heading}</h2>
 			  		          <p>{post.content}</p>
                       <small className="float-bottom-left mt-1 text-muted">
@@ -183,24 +182,8 @@ class Main extends Component {
                                 this.props.tipPost(event.target.name, tipAmount)
                               }}
                             >
-                              TIP 0.1 ETH
+                              Support With 0.1 ETH
                             </button>}
-=======
-                    <h2 class="heading">{post.heading}</h2>
-			  		        <p>{post.content}</p>
-                    <small className="float-bottom-left mt-1 text-muted">
-                          Support: {window.web3.utils.fromWei(post.tipAmount.toString(), 'Ether')} ETH
-                        </small>
-                        <button
-                          className="btn btn-link btn-sm float-right pt-0"
-                          name={post.id}
-                          onClick={(event) => {
-                            let tipAmount = window.web3.utils.toWei('0.1', 'Ether')
-                            console.log(event.target.name, tipAmount)
-                            this.props.tipPost(event.target.name, tipAmount)
-                          }}
-                        >Support with 0.1 ETH</button>
->>>>>>> 6c713d377c03025d08f503ffb80cf1f01fb0433a
                     </div>
                   </div>
                 )

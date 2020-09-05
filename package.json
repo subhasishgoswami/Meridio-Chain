@@ -1,8 +1,8 @@
 {
-  "name": "eth-marketplace",
-  "version": "0.1.0",
-  "description": "An Ethereum Marketplace",
-  "author": "gregory@dappuniversity.com",
+  "name": "meridio-chain",
+  "version": "0.1",
+  "description": "You own your idea",
+  "author": "CodeBusters",
   "dependencies": {
     "axios": "^0.20.0",
     "babel-polyfill": "^6.26.0",
@@ -27,7 +27,7 @@
     "truffle": "5.0.5",
     "web3": "1.0.0-beta.55"
   },
-  "homepage": "http://dappuniversity.github.io/social-network",
+  "homepage": "https://github.com/subhasishgosw5/Meridio-Chain",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -47,6 +47,7 @@
   ],
   "devDependencies": {
     "dotenv": "^8.2.0",
-    "gh-pages": "^2.2.0"
+    "gh-pages": "^2.2.0",
+    "prettier": "2.1.1"
   }
 }

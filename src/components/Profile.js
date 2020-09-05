@@ -124,13 +124,8 @@ export default class Profile extends Component {
 
 
 
-<<<<<<< HEAD
-                                        <Card id="ViewProfileCard" className="float-left col-sm-3 mx-5">
-                                        <img src={this.state.userData.image} alt="img should be here"/>
-=======
                                         <Card id="ViewProfileCard" className="float-left col-sm-3 ml-10 mr-10">
                                         <img src={this.state.userData.image} />
->>>>>>> 6c713d377c03025d08f503ffb80cf1f01fb0433a
                                         <Card.Body>
                                             <Card.Title>{this.state.userData.name}</Card.Title>
                                             <Card.Text>
@@ -142,7 +137,7 @@ export default class Profile extends Component {
                                             
                                         </Card.Body>
                                         </Card>
-
+                                {this.state.posts.length>0?
                                     <div className="col-md">
                                         <div className="row">
                                             {!this.state.loading?
@@ -179,7 +174,9 @@ export default class Profile extends Component {
 
                                             </div>
                                         </div>
+                                    :null}
                                 </div>
+                                
                         </div>
                     }
                     

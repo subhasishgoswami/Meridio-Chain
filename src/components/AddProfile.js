@@ -93,7 +93,7 @@ export default class AddProfile extends Component {
                                     this.updateUser({name,image,email,tagline})
                                     }}>
                                     <div className="form-group mr-sm-2" id="add_profile_form">
-                                    <h4 style={{color:'#ddd'}}>Complete Your Profile</h4>
+                                    <h4 style={{color:'black'}}>Complete Your Profile</h4>
                                     <input
                                         id="name"
                                         type="text"
