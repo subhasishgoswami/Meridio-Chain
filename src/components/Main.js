@@ -118,7 +118,7 @@ class Main extends Component {
                         className=''
                         width='40'
                         height='40'
-                        src={this.state.image!=""?this.state.image:'https://raw.githubusercontent.com/subhasishgosw5/Meridio-Chain/master/logo_trans.png'}
+                        src={this.state.image!=""?this.state.image:'https://raw.githubusercontent.com/subhasishgosw5/Meridio-Chain/master/resources/logo_trans.png'}
                       />
                        <Button variant="dark" id="addPostButton" onClick={() => {
                           this.props.checkCompleteProfile();
