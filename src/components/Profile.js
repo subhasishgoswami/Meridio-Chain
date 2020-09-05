@@ -124,8 +124,13 @@ export default class Profile extends Component {
 
 
 
+<<<<<<< HEAD
                                         <Card id="ViewProfileCard" className="float-left col-sm-3 mx-5">
                                         <img src={this.state.userData.image} alt="img should be here"/>
+=======
+                                        <Card id="ViewProfileCard" className="float-left col-sm-3 ml-10 mr-10">
+                                        <img src={this.state.userData.image} />
+>>>>>>> 6c713d377c03025d08f503ffb80cf1f01fb0433a
                                         <Card.Body>
                                             <Card.Title>{this.state.userData.name}</Card.Title>
                                             <Card.Text>
@@ -146,7 +151,7 @@ export default class Profile extends Component {
                                                 <p>&nbsp;</p>
                                                 { this.state.posts.map((post, key) => {
                                                     return(
-                                                    <div className="card mb-4" key={key} style={{backgroundColor:'#292929'}}>
+                                                    <div className="card mb-4" key={key} style={{backgroundColor:'#29487D'}}>
                                                         <div className="card-header">
                                                        
                                                         <small className="text-muted float-center" id="userPostHeading">{post.heading}</small>
@@ -159,7 +164,7 @@ export default class Profile extends Component {
                                                        
                                                         <li key={key} className="list-group-item py-2">
                                                             <small className="float-right mt-1 text-muted">
-                                                            TIPS: {window.web3.utils.fromWei(post.tipAmount.toString(), 'Ether')} ETH
+                                                            Support: {window.web3.utils.fromWei(post.tipAmount.toString(), 'Ether')} ETH
                                                             </small>
                                                             
                                                         </li>

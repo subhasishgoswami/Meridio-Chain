@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Modal,Button, Form} from 'react-bootstrap'
 import Loader from 'react-loader-spinner';
+import { get_user } from '../apis';
 
 function MyVerticallyCenteredModal(props) {
   return (
@@ -50,7 +51,8 @@ class Main extends Component {
     modalShow:false,
     userData:[],
     loading:true,
-    posts:[]
+    posts:[],
+    image:''
   }
 
   setModalShow(flag){
@@ -68,6 +70,14 @@ class Main extends Component {
     });
     return(flag);
   }
+
+  async getUserPicture(address){
+      let x = await get_user(address);
+      if(x.status=="Success"){
+        this.setState({image:x.data.image});
+      }
+  }
+
   componentDidMount(){
     let data=this.props.allUserData;
     let posts=this.props.posts;
@@ -91,7 +101,7 @@ class Main extends Component {
       }
       return 0;
     });
-    console.log(posts)
+    this.getUserPicture(this.props.address);
     this.setState({posts:posts,loading:false});
   }
   
@@ -101,12 +111,29 @@ class Main extends Component {
     return (
       <div className="container-fluid mt-5">
 
-        <Button variant="primary" id="addPostButton" onClick={() => {
-          this.props.checkCompleteProfile();
-          this.setModalShow(true);
-          }}>
-      What's in your mind?
-      </Button>
+
+      <div className="postcard  mx-auto align-middle" id="newPostButtonContainer" >
+                    <div className="post-header mx-auto row d-flex justify-content-center align-middle" style={{width:'80%'}}>
+                      <img
+                        className=''
+                        width='40'
+                        height='40'
+                        src={this.state.image!=""?this.state.image:'https://raw.githubusercontent.com/subhasishgosw5/Meridio-Chain/master/logo_trans.png'}
+                      />
+                       <Button variant="dark" id="addPostButton" onClick={() => {
+                          this.props.checkCompleteProfile();
+                          this.setModalShow(true);
+                          }}>
+                      What's in your mind?
+                      </Button>
+                      
+                    </div>
+                   
+                    
+                  </div>
+
+
+
 
       <MyVerticallyCenteredModal
         show={this.state.modalShow}
@@ -139,6 +166,7 @@ class Main extends Component {
                       
                     <hr></hr>
                     <div className="post-body">
+<<<<<<< HEAD
                       <h2 className="heading">{post.heading}</h2>
 			  		          <p>{post.content}</p>
                       <small className="float-bottom-left mt-1 text-muted">
@@ -157,6 +185,22 @@ class Main extends Component {
                             >
                               TIP 0.1 ETH
                             </button>}
+=======
+                    <h2 class="heading">{post.heading}</h2>
+			  		        <p>{post.content}</p>
+                    <small className="float-bottom-left mt-1 text-muted">
+                          Support: {window.web3.utils.fromWei(post.tipAmount.toString(), 'Ether')} ETH
+                        </small>
+                        <button
+                          className="btn btn-link btn-sm float-right pt-0"
+                          name={post.id}
+                          onClick={(event) => {
+                            let tipAmount = window.web3.utils.toWei('0.1', 'Ether')
+                            console.log(event.target.name, tipAmount)
+                            this.props.tipPost(event.target.name, tipAmount)
+                          }}
+                        >Support with 0.1 ETH</button>
+>>>>>>> 6c713d377c03025d08f503ffb80cf1f01fb0433a
                     </div>
                   </div>
                 )
