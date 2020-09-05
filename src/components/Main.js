@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Identicon from 'identicon.js';
 import {Modal,Button, Form} from 'react-bootstrap'
 import Loader from 'react-loader-spinner';
 import { get_user } from '../apis';
@@ -21,8 +20,7 @@ function MyVerticallyCenteredModal(props) {
                   event.preventDefault()
                   const heading = document.getElementById("postHeading").value
                   const content = document.getElementById("postContent").value
-                  
-                  let x = props.createPost(heading, content)
+                  props.createPost(heading, content)
                   props.onHide();
                 }}>
       <Modal.Body>
@@ -33,10 +31,6 @@ function MyVerticallyCenteredModal(props) {
         <Form.Group controlId="formBasicText">
           <Form.Control id="postContent" type="text" className="form-control" placeholder="What's on your mind?" required />
         </Form.Group>
-        {/* <Form.Group controlId="formBasicEmail">
-          <Form.Control id="email" type="email" className="form-control" placeholder="Enter your email " required />
-        </Form.Group> */}
-        
       
       </Modal.Body>
       <Modal.Footer>
@@ -68,10 +62,11 @@ class Main extends Component {
   matchedAddress(address,data){
     let flag=false;
     data.map(item=>{
-      if(item.address==address){
+      if(item.address===address){
         console.log("True!",item)
         flag=item;
       }
+      return 0;
     });
     return(flag);
   }
@@ -86,11 +81,14 @@ class Main extends Component {
   componentDidMount(){
     let data=this.props.allUserData;
     let posts=this.props.posts;
+    let user = this.props.user;
     this.setState({userData:data});
+    console.log("data: ",user);
+
     posts.map(item=>{
       let obj=this.matchedAddress(item.author,data);
       console.log("Returned Object",obj);
-      if(obj!=false){
+      if(obj!==false){
           item.email=obj.email;
           item.name=obj.name;
           item.image=obj.image;
@@ -101,11 +99,14 @@ class Main extends Component {
           item.image='';
           item.tagline='';
       }
+      return 0;
     });
     this.getUserPicture(this.props.address);
     this.setState({posts:posts,loading:false});
   }
   
+  
+
   render() {
     return (
       <div className="container-fluid mt-5">
@@ -141,29 +142,50 @@ class Main extends Component {
         email={this.props.email}
       />
        <div className="row">
-       
-         {!this.state.loading?
+        {!this.state.loading?
           <main role="main" className="col-md-12 ml-auto mr-auto" >
             <div className="content mr-auto ml-auto">
               <p>&nbsp;</p>
               { this.state.posts.map((post, key) => {
                 return(
-                  <>
                   <div className="postcard col-md-9 ml-auto mr-auto" key={key}>
                     <div className="post-header" style={{width:'100%'}}>
                       <img
                         className='mr-2 float-left'
                         width='40'
                         height='40'
+                        alt="img should be here"
                         src={post.image}
                       />
-                       <div className= "header-data "><p><strong>{post.name}</strong></p>
-                       <small className="text-muted ">{post.email}</small></div>
+                      <div className= "header-data">
+                        <p><strong>{post.name}</strong></p>
+                        <a href={"mailto:"+post.email}><small className="text-muted">{post.email}</small></a>
+                      </div>
                     </div>
                    
                       
                     <hr></hr>
                     <div className="post-body">
+<<<<<<< HEAD
+                      <h2 className="heading">{post.heading}</h2>
+			  		          <p>{post.content}</p>
+                      <small className="float-bottom-left mt-1 text-muted">
+                          TIPS: {window.web3.utils.fromWei(post.tipAmount.toString(), 'Ether')} ETH
+                      </small>
+                      { this.props.user === post.author ? <></>: 
+                      <button
+                              className="btn btn-link btn-sm float-right pt-0"
+                              name={post.id}
+                              id="support-button"
+                              onClick={(event) => {
+                                let tipAmount = window.web3.utils.toWei('0.1', 'Ether')
+                                console.log(event.target.name, tipAmount)
+                                this.props.tipPost(event.target.name, tipAmount)
+                              }}
+                            >
+                              TIP 0.1 ETH
+                            </button>}
+=======
                     <h2 class="heading">{post.heading}</h2>
 			  		        <p>{post.content}</p>
                     <small className="float-bottom-left mt-1 text-muted">
@@ -178,12 +200,12 @@ class Main extends Component {
                             this.props.tipPost(event.target.name, tipAmount)
                           }}
                         >Support with 0.1 ETH</button>
+>>>>>>> 6c713d377c03025d08f503ffb80cf1f01fb0433a
                     </div>
-                    
                   </div>
-                  </>
                 )
-              })}
+              })
+              }
             </div>
           </main>
           :

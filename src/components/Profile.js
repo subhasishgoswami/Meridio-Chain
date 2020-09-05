@@ -3,7 +3,6 @@ import Navbar from './Navbar';
 import { get_user } from '../apis';
 import AddProfile from './AddProfile';
 import Card from 'react-bootstrap/Card'
-import Container from 'react-bootstrap/Container';
 import './App.css';
 import SocialNetwork from '../abis/SocialNetwork.json';
 import Web3 from 'web3';
@@ -22,7 +21,7 @@ export default class Profile extends Component {
     async loadBlockchainData() {
         const web3 = window.web3
         // Load account
-        const accounts = await web3.eth.getAccounts()
+        await web3.eth.getAccounts()
         
         // Network ID
         const networkId = await web3.eth.net.getId()
@@ -53,9 +52,10 @@ export default class Profile extends Component {
         let posts=this.state.posts;
         let data=[];
         posts.map(item=>{
-            if(item.author==address){
+            if(item.author===address){
                 data.push(item);
             }
+            return 0;
         });
         this.setState({posts:data});
     }
@@ -80,11 +80,11 @@ export default class Profile extends Component {
      
         let x = await get_user(address);
         console.log(x.status);
-        if(x.status=="Success"){
+        if(x.status==="Success"){
             this.setState({userData:x.data});
             this.setState({loading:false});
 
-            if(!(this.state.userData.name==""||this.state.userData.image==""||this.state.userData.email==""||this.state.userData.tagline=="")){
+            if(!(this.state.userData.name===""||this.state.userData.image===""||this.state.userData.email===""||this.state.userData.tagline==="")){
                   await this.loadWeb3()
                   await this.loadBlockchainData();
                   this.getUserPosts();
@@ -112,7 +112,7 @@ export default class Profile extends Component {
                 {!this.state.loading?
                     <div style={{width:'100%'}}>
                         
-                    {this.state.userData.name==""||this.state.userData.image==""||this.state.userData.email==""||this.state.userData.tagline==""?
+                    {this.state.userData.name===""||this.state.userData.image===""||this.state.userData.email===""||this.state.userData.tagline===""?
                         <AddProfile userData={this.state.userData} />
                         :
                         <div className="text-center mt-5 container">   
@@ -124,8 +124,13 @@ export default class Profile extends Component {
 
 
 
+<<<<<<< HEAD
+                                        <Card id="ViewProfileCard" className="float-left col-sm-3 mx-5">
+                                        <img src={this.state.userData.image} alt="img should be here"/>
+=======
                                         <Card id="ViewProfileCard" className="float-left col-sm-3 ml-10 mr-10">
                                         <img src={this.state.userData.image} />
+>>>>>>> 6c713d377c03025d08f503ffb80cf1f01fb0433a
                                         <Card.Body>
                                             <Card.Title>{this.state.userData.name}</Card.Title>
                                             <Card.Text>
