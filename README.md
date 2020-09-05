@@ -16,14 +16,14 @@ Using our solution, the users can look if someone is already working on their id
 
 ### Technologies used
 
-#####Web App 
+##### Distributed App 
 
 * ReactJS
 * Solidity
 * Web3JS
 * Truffle
 
-#####API - [Visit the repository](https://github.com/subhasishgosw5/Meridio-Chain-Backend)
+##### Server App - [Visit the repository](https://github.com/subhasishgosw5/Meridio-Chain-Backend)
 
 * Flask
 * MongoDB
