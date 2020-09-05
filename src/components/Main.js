@@ -31,10 +31,6 @@ function MyVerticallyCenteredModal(props) {
         <Form.Group controlId="formBasicText">
           <Form.Control id="postContent" type="text" className="form-control" placeholder="What's on your mind?" required />
         </Form.Group>
-        {/* <Form.Group controlId="formBasicEmail">
-          <Form.Control id="email" type="email" className="form-control" placeholder="Enter your email " required />
-        </Form.Group> */}
-        
       
       </Modal.Body>
       <Modal.Footer>
@@ -113,14 +109,12 @@ class Main extends Component {
         email={this.props.email}
       />
        <div className="row">
-       
-         {!this.state.loading?
+        {!this.state.loading?
           <main role="main" className="col-md-12 ml-auto mr-auto" >
             <div className="content mr-auto ml-auto">
               <p>&nbsp;</p>
               { this.state.posts.map((post, key) => {
                 return(
-                  <>
                   <div className="postcard col-md-9 ml-auto mr-auto" key={key}>
                     <div className="post-header">
                       <img
@@ -129,37 +123,37 @@ class Main extends Component {
                         height='30'
                         src={post.image}
                       />
-                      <div className= "header-data"><p><strong>{post.name}</strong></p>
-                      <small className="text-muted">{post.email}</small></div>
-                      
+                      <div className= "header-data">
+                        <p><strong>{post.name}</strong></p>
+                        <a href={"mailto:"+post.email}><small className="text-muted">{post.email}</small></a>
+                      </div>
                     </div>
                     <hr></hr>
                     <div className="post-body">
-                    <h2 class="heading">{post.heading}</h2>
-			  		        <p>{post.content}</p>
-                    <small className="float-bottom-left mt-1 text-muted">
+                      <h2 class="heading">{post.heading}</h2>
+			  		          <p>{post.content}</p>
+                      <small className="float-bottom-left mt-1 text-muted">
                           TIPS: {window.web3.utils.fromWei(post.tipAmount.toString(), 'Ether')} ETH
-                        </small>
-                        <button
-                          className="btn btn-link btn-sm float-right pt-0"
-                          name={post.id}
-                          onClick={(event) => {
-                            let tipAmount = window.web3.utils.toWei('0.1', 'Ether')
-                            console.log(event.target.name, tipAmount)
-                            this.props.tipPost(event.target.name, tipAmount)
-                          }}
-                        >TIP 0.1 ETH</button>
+                      </small>
+                      <button
+                        className="btn btn-link btn-sm float-right pt-0"
+                        name={post.id}
+                        onClick={(event) => {
+                          let tipAmount = window.web3.utils.toWei('0.1', 'Ether')
+                          console.log(event.target.name, tipAmount)
+                          this.props.tipPost(event.target.name, tipAmount)
+                        }}
+                      >
+                        TIP 0.1 ETH
+                      </button>
                     </div>
-                    
                   </div>
-                  </>
                 )
               })}
             </div>
           </main>
           :
           null}
-
         </div>
       </div>
     );
