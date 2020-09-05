@@ -141,7 +141,7 @@ export default class AddProfile extends Component {
                 <div style={{width:'100%'}} className="align-middle text-center mt-5" id="reactLoader">
                     <Loader
                         type="Grid"
-                        color="#00BFFF"
+                        color="#29487D"
                         height={80}
                         width={80}
                     />
