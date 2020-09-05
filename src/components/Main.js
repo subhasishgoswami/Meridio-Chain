@@ -144,13 +144,8 @@ class Main extends Component {
                       <small className="float-bottom-left mt-1 text-muted">
                           TIPS: {window.web3.utils.fromWei(post.tipAmount.toString(), 'Ether')} ETH
                       </small>
-                      {
-                        ()=>{
-                          console.log("user:",this.props.user);
-      console.log("author: ",post.author);
-                          if(this.props.user !== post.author){
-                            return(
-                            <button
+                      { this.props.user === post.author ? <></>: 
+                      <button
                               className="btn btn-link btn-sm float-right pt-0"
                               name={post.id}
                               id="support-button"
@@ -161,12 +156,7 @@ class Main extends Component {
                               }}
                             >
                               TIP 0.1 ETH
-                            </button>
-                            )
-                          }
-                        }
-                      }
-                      
+                            </button>}
                     </div>
                   </div>
                 )
