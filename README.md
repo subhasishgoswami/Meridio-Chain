@@ -21,7 +21,6 @@ Using our solution, the users can look if someone is already working on their id
 * ReactJS
 * Solidity
 * Web3JS
-* Ganache
 * Truffle
 
 #####API - [Visit the repository](https://github.com/subhasishgosw5/Meridio-Chain-Backend)
