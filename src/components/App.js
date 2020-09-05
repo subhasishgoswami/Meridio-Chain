@@ -47,8 +47,8 @@ class App extends Component {
       localStorage.setItem('email', email);
       let x = await add_user({name,image,email,address,tagline});
       console.log(x);
-      if(typeof(x.data)=="string")
-          console.log("Address already in the server");
+      if(typeof(x.data)==="string")
+          console.log("Address already in the server",address);
       else{
           console.log(x.status);
       }
@@ -98,9 +98,9 @@ class App extends Component {
   async checkCompleteProfile(){
       let address=this.state.account;
       let x = await get_user(address);
-      if(x.status=="Success"){
+      if(x.status==="Success"){
         let data=x.data;
-        if(data.name==""||data.email==""||data.image==""||data.tagline==""){
+        if(data.name===""||data.email===""||data.image===""||data.tagline===""){
             window.location.href="/profile"
         }
     }
@@ -158,6 +158,7 @@ class App extends Component {
           </div>
           : <Main
               posts={this.state.posts}
+              user={this.state.account}
               createPost={this.createPost}
               tipPost={this.tipPost}
               allUserData={this.state.allUserData}

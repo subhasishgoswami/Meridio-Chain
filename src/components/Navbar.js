@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import './App.css'
-import Identicon from 'identicon.js';
 
 class Example extends Component {
 

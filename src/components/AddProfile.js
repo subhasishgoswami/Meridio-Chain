@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { update_user } from '../apis';
 import Card from 'react-bootstrap/Card'
-import $ from 'jquery';
 import Loader from 'react-loader-spinner';
 
 export default class AddProfile extends Component {
@@ -20,7 +19,7 @@ export default class AddProfile extends Component {
         obj.address=address;
         let x = await update_user(obj);
         console.log(x);
-        if(x.status=="Success"){
+        if(x.status==="Success"){
             localStorage.setItem('email', obj.email);
             window.location.reload(); 
         }

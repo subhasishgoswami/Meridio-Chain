@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Identicon from 'identicon.js';
 import {Modal,Button, Form} from 'react-bootstrap'
 import Loader from 'react-loader-spinner';
 
@@ -20,8 +19,7 @@ function MyVerticallyCenteredModal(props) {
                   event.preventDefault()
                   const heading = document.getElementById("postHeading").value
                   const content = document.getElementById("postContent").value
-                  
-                  let x = props.createPost(heading, content)
+                  props.createPost(heading, content)
                   props.onHide();
                 }}>
       <Modal.Body>
@@ -62,21 +60,25 @@ class Main extends Component {
   matchedAddress(address,data){
     let flag=false;
     data.map(item=>{
-      if(item.address==address){
+      if(item.address===address){
         console.log("True!",item)
         flag=item;
       }
+      return 0;
     });
     return(flag);
   }
   componentDidMount(){
     let data=this.props.allUserData;
     let posts=this.props.posts;
+    let user = this.props.user;
     this.setState({userData:data});
+    console.log("data: ",user);
+
     posts.map(item=>{
       let obj=this.matchedAddress(item.author,data);
       console.log("Returned Object",obj);
-      if(obj!=false){
+      if(obj!==false){
           item.email=obj.email;
           item.name=obj.name;
           item.image=obj.image;
@@ -87,11 +89,14 @@ class Main extends Component {
           item.image='';
           item.tagline='';
       }
+      return 0;
     });
     console.log(posts)
     this.setState({posts:posts,loading:false});
   }
   
+  
+
   render() {
     return (
       <div className="container-fluid mt-5">
@@ -122,48 +127,54 @@ class Main extends Component {
                         className='mr-2 float-left'
                         width='40'
                         height='40'
+                        alt="img should be here"
                         src={post.image}
                       />
-<<<<<<< HEAD
                       <div className= "header-data">
                         <p><strong>{post.name}</strong></p>
                         <a href={"mailto:"+post.email}><small className="text-muted">{post.email}</small></a>
                       </div>
-=======
-                       <div className= "header-data "><p><strong>{post.name}</strong></p>
-                       <small className="text-muted ">{post.email}</small></div>
->>>>>>> 8a416d3b590e24d7f9edef6d9d3a75f56f3f8b5b
                     </div>
                    
                       
                     <hr></hr>
                     <div className="post-body">
-                      <h2 class="heading">{post.heading}</h2>
+                      <h2 className="heading">{post.heading}</h2>
 			  		          <p>{post.content}</p>
                       <small className="float-bottom-left mt-1 text-muted">
                           TIPS: {window.web3.utils.fromWei(post.tipAmount.toString(), 'Ether')} ETH
                       </small>
-                      <button
-                        className="btn btn-link btn-sm float-right pt-0"
-                        name={post.id}
-                        onClick={(event) => {
-                          let tipAmount = window.web3.utils.toWei('0.1', 'Ether')
-                          console.log(event.target.name, tipAmount)
-                          this.props.tipPost(event.target.name, tipAmount)
-                        }}
-                      >
-                        TIP 0.1 ETH
-                      </button>
+                      {
+                        ()=>{
+                          console.log("user:",this.props.user);
+      console.log("author: ",post.author);
+                          if(this.props.user !== post.author){
+                            return(
+                            <button
+                              className="btn btn-link btn-sm float-right pt-0"
+                              name={post.id}
+                              id="support-button"
+                              onClick={(event) => {
+                                let tipAmount = window.web3.utils.toWei('0.1', 'Ether')
+                                console.log(event.target.name, tipAmount)
+                                this.props.tipPost(event.target.name, tipAmount)
+                              }}
+                            >
+                              TIP 0.1 ETH
+                            </button>
+                            )
+                          }
+                        }
+                      }
+                      
                     </div>
                   </div>
                 )
-              })}
+              })
+              }
             </div>
           </main>
           :
-<<<<<<< HEAD
-          null}
-=======
           <div style={{width:'100%'}} className="align-middle text-center mt-5" id="reactLoader">
           <Loader
               type="Grid"
@@ -175,7 +186,6 @@ class Main extends Component {
           
           }
 
->>>>>>> 8a416d3b590e24d7f9edef6d9d3a75f56f3f8b5b
         </div>
       </div>
     );
