@@ -21,7 +21,7 @@ body{
 	margin:50px auto !important;
 	padding-top: 10px;
 	padding-bottom:50px;
-	background-color: #292929;
+	background-color: #fafafa;
 }
 
 #add_profile_form input{
@@ -38,7 +38,12 @@ body{
 
 #ViewProfileCard{
 	margin:30px auto !important;
-	background-color:#292929;
+	background-color:#fafafa;
+}
+
+#userPostHeading{
+	font-size:20px !important;
+	color:#ddd !important;
 }
 
 #ViewProfileCard img{
