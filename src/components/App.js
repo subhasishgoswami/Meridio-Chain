@@ -5,6 +5,7 @@ import SocialNetwork from '../abis/SocialNetwork.json'
 import Navbar from './Navbar'
 import Main from './Main';
 import { add_user,get_all_users,get_user } from '../apis';
+import Loader from 'react-loader-spinner';
 
 class App extends Component {
 
@@ -78,7 +79,7 @@ class App extends Component {
           posts: [...this.state.posts, post]
         })
 
-        
+
       }
 
 
@@ -146,7 +147,15 @@ class App extends Component {
       <div>
         <Navbar account={this.state.account} />
         { this.state.loading
-          ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
+          ? 
+          <div style={{width:'100%'}} className="align-middle text-center mt-5" id="reactLoader">
+          <Loader
+              type="Grid"
+              color="#00BFFF"
+              height={80}
+              width={80}
+          />
+          </div>
           : <Main
               posts={this.state.posts}
               createPost={this.createPost}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { update_user } from '../apis';
 import Card from 'react-bootstrap/Card'
 import $ from 'jquery';
-
+import Loader from 'react-loader-spinner';
 
 export default class AddProfile extends Component {
 
@@ -137,7 +137,16 @@ export default class AddProfile extends Component {
 
 
                     </div>
-                :<div id="loader" className="text-center mt-5"><p>Loading...</p></div>}
+                :
+                <div style={{width:'100%'}} className="align-middle text-center mt-5" id="reactLoader">
+                    <Loader
+                        type="Grid"
+                        color="#00BFFF"
+                        height={80}
+                        width={80}
+                    />
+                </div>
+                }
 
             </div>
         );

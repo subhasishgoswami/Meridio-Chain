@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Identicon from 'identicon.js';
 import {Modal,Button, Form} from 'react-bootstrap'
+import Loader from 'react-loader-spinner';
 
 function MyVerticallyCenteredModal(props) {
   return (
@@ -159,7 +160,16 @@ class Main extends Component {
             </div>
           </main>
           :
-          null}
+          <div style={{width:'100%'}} className="align-middle text-center mt-5" id="reactLoader">
+          <Loader
+              type="Grid"
+              color="#00BFFF"
+              height={80}
+              width={80}
+          />
+          </div>
+          
+          }
 
         </div>
       </div>

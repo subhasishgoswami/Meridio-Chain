@@ -101,3 +101,8 @@ body{
 	font-size: 25px;
 	margin-left: 1.5rem;
 }
+
+#reactLoader{
+	position: absolute;
+	top:300px !important;
+}

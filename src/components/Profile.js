@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 import './App.css';
 import SocialNetwork from '../abis/SocialNetwork.json';
 import Web3 from 'web3';
+import Loader from 'react-loader-spinner';
 
 export default class Profile extends Component {
 
@@ -178,7 +179,17 @@ export default class Profile extends Component {
                     }
                     
                     </div>
-                :<div id="loader" className="text-center mt-5"><p>Loading...</p></div>}
+                :
+
+                <div style={{width:'100%'}} className="align-middle text-center mt-5" id="reactLoader">
+                <Loader
+                    type="Grid"
+                    color="#00BFFF"
+                    height={80}
+                    width={80}
+                />
+                </div>
+                 }
 
             </div>
         );
