@@ -43,6 +43,7 @@ Using our solution, the users can look if someone is already working on their id
 * Do `npm install -g ganache-cli` and then `npm install -g truffle` (One Time Setup)
 * Run `ganache-cli`
 * In another terminal window, from project root run `truffle migrate`
+* Make sure your MetaMask in connected to localhost:8545
 * Finally, Run WebApp with `npm run start`
 
 <br>

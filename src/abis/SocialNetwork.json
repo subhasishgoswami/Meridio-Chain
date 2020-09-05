@@ -6855,10 +6855,85 @@
       "links": {},
       "address": "0x1fa5C20e6a929ee8B5C38f2d221B10Aa3a4053B4",
       "transactionHash": "0x6840ec0cc65045009addb2a13cfb53f25502030d591683742605254324c41ecc"
+    },
+    "1599335876187": {
+      "events": {
+        "0x0e2769bd597cd7048e25b64a846e1254d4cb84b13c4aba4ad4a891baf7a399c6": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "heading",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "content",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "tipAmount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address payable",
+              "name": "author",
+              "type": "address"
+            }
+          ],
+          "name": "PostCreated",
+          "type": "event"
+        },
+        "0x20988fe475351e75813672abada1dddb7ac67cbbeb81e61e1160b8329d8cdf1c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "content",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "tipAmount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address payable",
+              "name": "author",
+              "type": "address"
+            }
+          ],
+          "name": "PostTipped",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xD173EC8438741e1C41Fd97F03C5A664aEdb08F0E",
+      "transactionHash": "0xe20cb5179de63258c508fe12e888aa2278ee971b14b124a8a2897898e3886ee6"
     }
   },
   "schemaVersion": "3.2.4",
-  "updatedAt": "2020-09-05T18:38:44.268Z",
+  "updatedAt": "2020-09-05T19:58:32.343Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
