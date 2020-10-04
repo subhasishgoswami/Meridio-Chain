@@ -16,10 +16,10 @@ Using our solution, the users can look if someone is already working on their id
 
 ### Screenies
 <div align="center">
-<img src="resources/1.jpeg" width="550" align="center"/>
+<img src="resources/1.jpeg" width="480" align="center"/>
 <br>
 <br>
-<img src="resources/2.jpeg" width="550" align="center" style="border: 3px solid #e78200;"/>
+<img src="resources/2.jpeg" width="600" align="center" style="border: 3px solid #e78200;"/>
 </div>
 
 ### Technologies used
