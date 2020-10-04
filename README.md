@@ -19,7 +19,7 @@ Using our solution, the users can look if someone is already working on their id
 <img src="resources/1.jpeg" width="440" align="center"/>
 <br>
 <br>
-<img src="resources/2.jpeg" width="650" align="center" style="border: 3px solid #e78200;"/>
+<img src="resources/2.jpeg" width="800" align="center" style="border: 3px solid #e78200;"/>
 </div>
 
 ### Technologies used
